@@ -137,6 +137,7 @@
 
   function animateCount(el) {
     const target = parseFloat(el.dataset.target);
+    const prefix = el.dataset.prefix || '';
     const suffix = el.dataset.suffix || '';
     const duration = 1600;
     const start = performance.now();
@@ -146,7 +147,7 @@
       const t = Math.min(elapsed / duration, 1);
       const eased = easeOutExpo(t);
       const value = Math.round(target * eased);
-      el.textContent = value + suffix;
+      el.textContent = prefix + value + suffix;
       if (t < 1) requestAnimationFrame(update);
     }
     requestAnimationFrame(update);
